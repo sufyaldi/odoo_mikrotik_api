@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_mikrotik_config_form" model="ir.ui.view">
+        <field name="name">mikrotik.config.form</field>
+        <field name="model">mikrotik.config</field>
+        <field name="arch" type="xml">
+            <form string="Mikrotik Configuration">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="ip_address"/>
+                        <field name="port"/>
+                        <field name="username"/>
+                        <field name="password"/>
+                    </group>
+                    <button name="action_monitor_mikrotik" string="Monitor Mikrotik" type="object" class="oe_highlight"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_mikrotik_config_tree" model="ir.ui.view">
+        <field name="name">mikrotik.config.tree</field>
+        <field name="model">mikrotik.config</field>
+        <field name="arch" type="xml">
+            <tree string="Mikrotik Configurations">
+                <field name="name"/>
+                <field name="ip_address"/>
+                <field name="port"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_mikrotik_config" model="ir.actions.act_window">
+        <field name="name">Mikrotik Configurations</field>
+        <field name="res_model">mikrotik.config</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Mikrotik Configuration.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="mikrotik_config_menu_root" name="Mikrotik" sequence="10"/>
+    <menuitem id="mikrotik_config_menu" name="Configurations" parent="mikrotik_config_menu_root" action="action_mikrotik_config"/>
+</odoo>
